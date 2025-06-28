@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReinoFlix - Desenhos e Jogos Bíblicos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a href="#" onclick="showPage('home')" class="sidebar-item active" title="Home">
+            <i class="fas fa-home"></i>
+        </a>
+        <a href="#" onclick="showPage('search')" class="sidebar-item" title="Pesquisa">
+            <i class="fas fa-search"></i>
+        </a>
+        <a href="#" onclick="showPage('games')" class="sidebar-item" title="Jogos">
+            <i class="fas fa-gamepad"></i>
+        </a>
+        <a href="#" onclick="showPage('login')" class="sidebar-item" id="auth-link" title="Login">
+            <i class="fas fa-sign-in-alt" id="auth-icon"></i>
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <div class="container">
+                <!-- Hero Section -->
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1 class="logo">REINOFLIX</h1>
+                        <h2 class="hero-title">O NASCIMENTO DE JESUS</h2>
+                        <span class="badge">Top 1 em séries hoje</span>
+                        <p class="hero-description">
+                            Maria e José esperam pelo nascimento de um bebê muito especial, o Filho de Deus, 
+                            em uma emocionante jornada de fé na antiga Judéia, neste filme cheio de aventuras 
+                            e magia para toda a família assistir junto.
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-play"></i> Assistir
+                            </button>
+                            <button class="btn btn-secondary" onclick="showPage('games')">
+                                <i class="fas fa-gamepad"></i> Jogar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1544273677-6e4c999de2a7?w=600&h=300&fit=crop&crop=center" 
+                             alt="Cena do desenho">
+                    </div>
+                </div>
+
+                <!-- Biblical Stories Section -->
+                <div class="section">
+                    <h3 class="section-title">Historinhas bíblicas</h3>
+                    <div class="stories-grid" id="stories-grid">
+                        <!-- Stories will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Games Section -->
+                <div class="section">
+                    <div class="section-header">
+                        <h3 class="section-title">Jogos Educativos</h3>
+                        <a href="#" onclick="showPage('games')" class="see-all">
+                            Ver todos <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="games-preview">
+                        <div class="game-card">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <h4>Quiz Bíblico</h4>
+                            <p>Teste seus conhecimentos</p>
+                        </div>
+                        <div class="game-card">
+                            <i class="fas fa-brain"></i>
+                            <h4>Jogo da Memória</h4>
+                            <p>Encontre os pares</p>
+                        </div>
+                        <div class="game-card">
+                            <i class="fas fa-search"></i>
+                            <h4>Caça-Palavras</h4>
+                            <p>Encontre as palavras</p>
+                        </div>
+                        <div class="game-card">
+                            <i class="fas fa-cross"></i>
+                            <h4>Quebra-Cabeça</h4>
+                            <p>Monte a imagem</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login-page" class="page">
+            <div class="auth-container">
+                <div class="auth-form">
+                    <div class="auth-header">
+                        <h1 class="logo">REINOFLIX</h1>
+                        <h2>Entrar na sua conta</h2>
+                        <p>Acesse seus desenhos e jogos favoritos</p>
+                    </div>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Senha</label>
+                            <input type="password" id="password" required placeholder="Sua senha">
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox">
+                                <input type="checkbox"> Lembrar de mim
+                            </label>
+                            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Entrar</button>
+                        <div class="divider">
+                            <span>Ou continue com</span>
+                        </div>
+                        <button type="button" class="btn btn-google btn-full" onclick="loginWithGoogle()">
+                            <svg class="google-icon" viewBox="0 0 24 24">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                            Entrar com Google
+                        </button>
+                        <div class="auth-switch">
+                            <span>Não tem uma conta? </span>
+                            <a href="#" onclick="showPage('register')">Cadastre-se</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Page -->
+        <div id="register-page" class="page">
+            <div class="auth-container">
+                <div class="auth-form">
+                    <div class="auth-header">
+                        <h1 class="logo">REINOFLIX</h1>
+                        <h2>Criar sua conta</h2>
+                        <p>Junte-se à nossa comunidade cristã</p>
+                    </div>
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label for="reg-name">Nome completo</label>
+                            <input type="text" id="reg-name" required placeholder="Seu nome completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Email</label>
+                            <input type="email" id="reg-email" required placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Senha</label>
+                            <input type="password" id="reg-password" required placeholder="Mínimo 6 caracteres">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-confirm-password">Confirmar senha</label>
+                            <input type="password" id="reg-confirm-password" required placeholder="Confirme sua senha">
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox">
+                                <input type="checkbox" required> 
+                                Concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Criar conta</button>
+                        <div class="divider">
+                            <span>Ou continue com</span>
+                        </div>
+                        <button type="button" class="btn btn-google btn-full" onclick="registerWithGoogle()">
+                            <svg class="google-icon" viewBox="0 0 24 24">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                            Registrar com Google
+                        </button>
+                        <div class="auth-switch">
+                            <span>Já tem uma conta? </span>
+                            <a href="#" onclick="showPage('login')">Faça login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Page -->
+        <div id="search-page" class="page">
+            <div class="container">
+                <div class="search-header">
+                    <h1>Pesquisar Desenhos</h1>
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="Pesquisar por título ou descrição...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="categories">
+                        <h3>Categorias</h3>
+                        <div class="category-buttons" id="category-buttons">
+                            <!-- Categories will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="search-results">
+                    <p id="search-results-count"></p>
+                    <div class="cartoons-grid" id="cartoons-grid">
+                        <!-- Search results will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Games Page -->
+        <div id="games-page" class="page">
+            <div class="container">
+                <div class="games-header">
+                    <h1>Jogos Educativos</h1>
+                    <p>Aprenda sobre a Bíblia de forma divertida e interativa!</p>
+                </div>
+                <div class="games-grid" id="games-grid">
+                    <!-- Games will be loaded here -->
+                </div>
+                <div class="games-info">
+                    <h2>Por que jogar?</h2>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Aprendizado</h3>
+                            <p>Aprenda histórias e ensinamentos bíblicos de forma divertida</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-heart"></i>
+                            <h3>Valores</h3>
+                            <p>Desenvolva valores cristãos através de jogos educativos</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-users"></i>
+                            <h3>Família</h3>
+                            <p>Jogos perfeitos para toda a família jogar junta</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Modal -->
+        <div id="game-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeGameModal()">&times;</span>
+                <div id="game-content">
+                    <!-- Game content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
